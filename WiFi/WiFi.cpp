@@ -3,50 +3,29 @@
 //
 
 #include "WiFi.h"
+#include "../Database/Database.h"
+#include <boost/thread/thread.hpp>
+#include "gps.h"
 
-bool WiFi::get_do_run() {
-    return this->do_run;
-}
-
-void WiFi::set_do_run(bool value) {
-    this->do_run = value;
-}
-
-char* WiFi::get_wlan_interface() {
-    return this->interface;
-}
-
-void WiFi::set_wlan_interface(char*interface) {
-    this->interface = interface;
-}
-
-std::string WiFi::get_crash_reason() {
-    return this->crash_reason;
-}
-
-void WiFi::set_crash_reason(std::string crash_reason) {
-    this->crash_reason = crash_reason;
-}
-
-void WiFi::set_result(wireless_scan *result) {
-    this->result = result;
-}
-
-wireless_scan* WiFi::get_result() {
-    return this->result;
-}
-
-void WiFi::set_sleep_time(int sleep_time) {
-    this->sleep_time = sleep_time;
-}
-
-int WiFi::get_sleep_time() {
-    return this->sleep_time;
-}
-
-void WiFi::evaluate_results() {
-    while(NULL != result){
-
-        result = result->next;
+void WiFiMonitor::run(WiFi wifi, GPS gps) {
+    Database db;
+    int sock = iw_sockets_open();
+    iwrange range;
+    wireless_scan_head scan_head;
+    if(iw_get_range_info(sock, wifi.get_wlan_interface(), &range) < 0){
+        wifi.set_crash_reason("WIFI::CRASH::RANGE_INFO");
+        wifi.set_do_run(false);
+    }
+    while(wifi.get_do_run()){
+        if(iw_scan(sock, wifi.get_wlan_interface(), range.we_version_compiled, &scan_head) < 0){
+            wifi.set_crash_reason("WIFI::CRASH::IW_SCAN");
+            wifi.set_do_run(false);
+        }
+        wifi.set_result(scan_head.result);
+        gps_data_t* gps_data = gps.get_gps_data();
+        if(!db.wifi_in_database(scan_head.result->ap_addr.sa_data)){
+            db.wifi_log(gps_data->fix.longitude, gps_data->fix.latitude, gps_data->fix.altitude, gps_data->fix.speed, gps_data->satellites_used, std::to_string(gps_data->fix.time), scan_head.result->b.essid, scan_head.result->ap_addr.sa_data, scan_head.result->b.name, std::to_string(scan_head.result->b.freq));
+        }
+        boost::this_thread::sleep(boost::posix_time::seconds(wifi.get_sleep_time()));
     }
 }
