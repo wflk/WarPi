@@ -8,11 +8,11 @@ echo "[ * ] Updating System"
 apt-get update > /dev/null 2>&1
 echo "[ * ] Upgrading System"
 apt-get upgrade -y > /dev/null 2>&1
-echo "[ * ] Installing wget, bzip2, tar"
-apt-get install wget bzip2 tar -y > /dev/null 2>&1
+echo "[ * ] Installing wget, bzip2, tar, git"
+apt-get install wget bzip2 tar git -y > /dev/null 2>&1
 
 echo "[ * ] Installing other needed libraries"
-apt-get install libiw-dev -y > /dev/null 2>&1
+apt-get install libiw-dev libcurl4-openssl-dev libgps-dev autoconf libtool -y > /dev/null 2>&1
 
 echo "[ * ] Changing directory to '/tmp/'"
 cd /tmp/
@@ -47,5 +47,16 @@ echo "[ * ] Building and installing (this will take quiet a while)"
 echo "[ + ] Done. libboost should be installed now."
 echo "[ * ] Cleaning up.."
 cd /tmp/
-rm -rf boost*> /dev/null 2>&1
+rm -rf boost* > /dev/null 2>&1
 
+echo "[ * ] Cloning restclient-cpp"
+git clone https://github.com/mrtazz/restclient-cpp.git > /dev/null 2>&1
+cd restclient-cpp/
+echo "[ * ] Installing restclient-cpp"
+./autogen.sh > /dev/null 2>&1
+./configure > /dev/null 2>&1
+make > /dev/null 2>&1
+make install > /dev/null 2>&1
+echo "[ * ] Done. Cleaning up."
+cd /tmp
+rm -rf restclient-cpp/
