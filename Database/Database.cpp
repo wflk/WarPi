@@ -4,7 +4,6 @@
 
 #include <restclient-cpp/restclient.h>
 #include "Database.h"
-#include "restclient-cpp/restclient.h"
 #include "../JSON/json.hpp"
 
 using json = nlohmann::json;

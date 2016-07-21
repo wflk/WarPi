@@ -16,8 +16,6 @@ private:
     std::string address = "http://localhost:59840";
     std::string database = "warpi";
 
-    std::string get_curl_string(size_t size, size_t nmemb, void *stream);
-
 public:
     bool gps_log(double longitude, double latitude, double altitude, double speed, int satellites_used, std::string timestamp);
     bool wifi_log(double longitude, double latitude, double altitude, double speed, int satellites_used, std::string timestamp, std::string essid, std::string bssid, std::string encryption, std::string freq);
