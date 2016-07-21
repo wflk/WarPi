@@ -10,9 +10,6 @@
 
 class Database {
 private:
-    CURL *curl;
-    CURLcode res;
-
     std::string address = "http://localhost:59840";
     std::string database = "warpi";
 
