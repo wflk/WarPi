@@ -8,8 +8,8 @@ echo "[ * ] Updating System"
 apt-get update > /dev/null 2>&1
 echo "[ * ] Upgrading System"
 apt-get upgrade -y > /dev/null 2>&1
-echo "[ * ] Installing wget, bzip2, tar, git"
-apt-get install wget bzip2 tar git -y > /dev/null 2>&1
+echo "[ * ] Installing wget, bzip2, tar, git, screen"
+apt-get install wget bzip2 tar git screen -y > /dev/null 2>&1
 
 echo "[ * ] Installing other needed libraries"
 apt-get install libiw-dev libcurl4-openssl-dev libgps-dev autoconf libtool -y > /dev/null 2>&1
