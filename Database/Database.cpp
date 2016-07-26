@@ -4,9 +4,7 @@
 
 #include <restclient-cpp/restclient.h>
 #include "Database.h"
-#include "../JSON/json.hpp"
-
-using json = nlohmann::json;
+#include <json/json.h>
 
 bool Database::gps_log(double longitude, double latitude, double altitude, double speed, int satellites_used, std::string timestamp) {
     std::string post_data;
@@ -64,9 +62,6 @@ bool Database::wifi_in_database(std::string bssid) {
 
 std::string Database::get_wifi_password(std::string bssid) {
     RestClient::Response r = RestClient::get(address + "/" + database + "/wifi_log/" + bssid);
-    json structure = json::parse(r.body);
-    if(structure.count("password") == 1){
-        return structure["password"];
-    }
-    return NULL;
+    Json::Value root = r.body;
+    return root.get("password", "NULL").asString();
 }
