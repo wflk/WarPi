@@ -5,15 +5,11 @@
 #ifndef WARPI_CLIENT_H
 #define WARPI_CLIENT_H
 
-
-#include <string>
+#include "ClientObject.h"
 
 class Client {
-private:
-    std::string external_main_node = "";
-    std::string internal_main_node = "";
-
 public:
+    static void run(ClientObject client);
 
 
 };
