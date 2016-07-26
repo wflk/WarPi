@@ -5,9 +5,9 @@
 #ifndef WARPI_MANAGER_H
 #define WARPI_MANAGER_H
 
+#include "../GPS/GPSObject.h"
 #include "../GPS/GPS.h"
-#include "../GPS/GPSMonitor.h"
-#include "../WiFi/WiFiMonitor.h"
+#include "../WiFi/WiFi.h"
 
 #include <boost/thread.hpp>
 
