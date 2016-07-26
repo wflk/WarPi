@@ -1,4 +1,5 @@
 #WarPi<br />
+[![Build Status](http://eberlein.io:8080/buildStatus/icon?job=WarPi)](http://eberlein.io:8080/job/WarPi)
 ###What is it?<br />
 Basically a All-in-One Box for your Car.<br />
 ###Sounds sketchy. Whats exactly in it?<br />
@@ -19,7 +20,7 @@ WiFi.* is the Object for the Storage of the WiFi Scans.<br />
 WiFiMonitor.* is the threaded Function, which manages connecting, Wardriving, etc.<br />
 
 ###Ok, But what do I need to run it?<br />
-(Automatic install script coming soon.)
+Needs GCC >= 4.9
 #####RestClient:<br />
 git clone https://github.com/mrtazz/restclient-cpp<br />
 cd restclient-cpp/ && ./autogen.sh && ./configure && make && sudo make install<br />
@@ -47,7 +48,7 @@ Report Bugs, open a push request, just any useful contribution should get accept
 #####What's TODO:<br />
 WiFi:<br />
 ->Karma HotSpot<br />
-->Thread Lock in WiFi Class<br />
+->Usage Lock in WiFi Class<br />
 ->Authentication with known & open Networks<br />
 <br />
 Networking:<br />
