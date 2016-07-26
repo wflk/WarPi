@@ -5,6 +5,7 @@
 #include "ManagerObject.h"
 
 void Manager::start_gps_monitor_thread() {
+    gpsMonitor = GPSMonitor();
     this->gps_monitor_thread = boost::thread(gpsMonitor.run, gps);
 }
 
@@ -17,7 +18,8 @@ void Manager::join_gps_monitor_thread() {
 }
 
 void Manager::start_wifi_monitor_thread() {
-    this->wifi_monitor_thread = boost::thread(wiFiMonitor.run, wiFi);
+    wiFiMonitor = WiFiMonitor();
+    this->wifi_monitor_thread = boost::thread(wiFiMonitor.run, wiFi, gps);
 }
 void Manager::join_wifi_monitor_thread() {
     this->wifi_monitor_thread.join();
