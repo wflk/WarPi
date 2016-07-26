@@ -7,7 +7,7 @@
 
 
 #include "WiFiObject.h"
-#include "../GPS/GPS.h"
+#include "../GPS/GPSObject.h"
 
 class WiFiMonitor {
 public:

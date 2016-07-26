@@ -12,11 +12,11 @@ void WiFi::set_do_run(bool value) {
     this->do_run = value;
 }
 
-char* WiFi::get_wlan_interface() {
+std::string WiFi::get_wlan_interface() {
     return this->interface;
 }
 
-void WiFi::set_wlan_interface(char*interface) {
+void WiFi::set_wlan_interface(std::string interface) {
     this->interface = interface;
 }
 
@@ -46,7 +46,14 @@ int WiFi::get_sleep_time() {
 
 void WiFi::evaluate_results() {
     while(NULL != result){
-
         result = result->next;
     }
+}
+
+bool WiFi::is_interface_used(){
+    return this->interface_used;
+}
+
+void WiFi::set_interface_used(bool value){
+    this->interface_used = value;
 }

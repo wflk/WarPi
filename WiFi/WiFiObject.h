@@ -12,9 +12,11 @@
 class WiFi {
 private:
     wireless_scan* result;
-    char* interface = "wlan0";
+    std::string interface = "wlan0";
     std::string crash_reason = NULL;
     int sleep_time = 1;
+
+    bool interface_used = false;
 
     bool do_run = true;
 
@@ -24,8 +26,8 @@ public:
     void set_do_run(bool value);
     bool get_do_run();
 
-    char* get_wlan_interface();
-    void set_wlan_interface(char* interface);
+    std::string get_wlan_interface();
+    void set_wlan_interface(std::string interface);
 
     void set_crash_reason(std::string crash_reason);
     std::string get_crash_reason();
@@ -35,6 +37,9 @@ public:
 
     int get_sleep_time();
     void set_sleep_time(int sleep_time);
+
+    bool is_interface_used();
+    void set_interface_used(bool value);
 };
 
 
