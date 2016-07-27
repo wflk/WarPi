@@ -74,6 +74,7 @@ void usage(){
 }
 
 int main(int argc, char ** argv) {
+    cout << "Args: " << argc << endl;
     if(argc == 2){
         if(argv[1] == "install"){
             check_root();
