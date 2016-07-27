@@ -22,7 +22,7 @@ void GPSMonitor::run(GPS gps) {
             if((rc = gps_read(&gps_data)) == -1){
                 gps.set_last_error(gps_errstr(rc));
             } else {
-                if ((gps_data.status == STATUS_FIX) && (gps_data.fix.mode == MODE_2D || gps_data.fix.mode == MODE_3D) && !isnan(gps_data.fix.longitude) && !isnan(gps_data.fix.latitude)){
+                if ((gps_data.status == STATUS_FIX) && (gps_data.fix.mode == MODE_2D || gps_data.fix.mode == MODE_3D)){
                     gps.set_gps_data(&gps_data);
                     gettimeofday(&tv, NULL);
                     db.gps_log(gps_data.fix.longitude, gps_data.fix.latitude, gps_data.fix.speed, gps_data.satellites_used, std::to_string(tv.tv_sec));
