@@ -31,23 +31,8 @@ cd /tmp/
 rm -rf cmake* > /dev/null 2>&1
 echo "[ * ] OK"
 
-echo "[ * ] Installing dependencies for libboost"
-
-echo "[ * ] Downloading and unpacking libboost 1.61"
-wget https://sourceforge.net/projects/boost/files/boost/1.61.0/boost_1_61_0.tar.bz2
-bunzip2 boost_1_61_0.tar.bz2 > /dev/null 2>&1
-tar xf boost_1_61_0.tar > /dev/null 2>&1
-
-echo "[ * ] Boostrapping"
-cd boost_1_61_0
-./boostrap.sh --libdir=/usr/local/lib --includedir=/usr/local/include > /dev/null 2>&1
-echo "[ * ] Building and installing (this will take quiet a while)"
-./bjam > /dev/null 2>&1
-./bjam install > /dev/null 2>&1
-echo "[ + ] Done. libboost should be installed now."
-echo "[ * ] Cleaning up.."
-cd /tmp/
-rm -rf boost* > /dev/null 2>&1
+echo "[ * ] Installing libboost"
+apt-get install libboost-all-dev
 
 echo "[ * ] Cloning restclient-cpp"
 git clone https://github.com/mrtazz/restclient-cpp.git > /dev/null 2>&1
@@ -60,3 +45,18 @@ make install > /dev/null 2>&1
 echo "[ * ] Done. Cleaning up."
 cd /tmp
 rm -rf restclient-cpp/
+
+echo "[ * ] Cloning jsoncpp"
+git clone https://github.com/open-source-parsers/jsoncpp > /dev/null 2>&1
+cd jsoncpp
+echo "[ * ] Installing jsoncpp"
+mkdir build
+cd build
+cmake .. > /dev/null 2>&1
+make > /dev/null 2>&1
+make install > /dev/null 2>&1
+cd /tmp
+echo "[ + ] Should be installed. Cleaning up."
+rm -rf jsoncpp
+
+echo "[ + ] Done installing dependencies"
