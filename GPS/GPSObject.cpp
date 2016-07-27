@@ -35,3 +35,18 @@ int GPS::get_wait_time() {
 void GPS::set_gps_data(struct gps_data_t* gps_data) {
     this->gps_data = gps_data;
 }
+
+std::string GPS::get_crash_reason() {
+    return this->crash_reason;
+}
+
+void GPS::set_crash_reason(std::string crash_reson) {
+    this->crash_reason = crash_reson;
+}
+
+void GPS::set_last_error(std::string error) {
+    this->last_error = error;
+}
+std::string GPS::get_last_error() {
+    return this->last_error;
+}

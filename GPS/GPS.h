@@ -5,9 +5,8 @@
 #ifndef WARPI_GPSMONITOR_H
 #define WARPI_GPSMONITOR_H
 
-#include "GPSObject.h"
-#include "../Database/Database.h"
 #include <boost/thread/thread.hpp>
+#include "GPSObject.h"
 
 
 class GPSMonitor {
