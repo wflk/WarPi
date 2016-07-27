@@ -26,7 +26,7 @@ void WiFiMonitor::run(WiFi wifi, GPS gps) {
             wifi.set_result(scan_head.result);
             gps_data_t* gps_data = gps.get_gps_data();
             if(!db.wifi_in_database(scan_head.result->ap_addr.sa_data)){
-                db.wifi_log(gps_data->fix.longitude, gps_data->fix.latitude, gps_data->fix.altitude, gps_data->fix.speed, gps_data->satellites_used, std::to_string(gps_data->fix.time), scan_head.result->b.essid, scan_head.result->ap_addr.sa_data, scan_head.result->b.name, std::to_string(scan_head.result->b.freq));
+                db.wifi_log(gps_data->fix.longitude, gps_data->fix.latitude, gps_data->fix.speed, gps_data->satellites_used, std::to_string(gps_data->fix.time), scan_head.result->b.essid, scan_head.result->ap_addr.sa_data, scan_head.result->b.name, std::to_string(scan_head.result->b.freq));
             }
             wifi.set_interface_used(false);
         }
