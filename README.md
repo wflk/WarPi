@@ -75,4 +75,9 @@ Code Documentation<br />
 <br />
 Whatever else comes to my/your head and seems usable.<br />
 <br />
+
+###Errors:
+error while loading shared libraries: librestclient-cpp.so.1: cannot open shared object file: No such file or directory:<br />
+ln -s /usr/local/lib/librestclient-cpp.so.1 /usr/lib/<br />
+
 // Code is ugly. No h8 pls b0ss.
