@@ -74,34 +74,13 @@ void usage(){
 }
 
 int main(int argc, char ** argv) {
-    cout << "Args: " << argc << endl;
-    if(argc == 2){
-        cout << argv[argc];
-        if(argv[1] == "install"){
-            check_root();
-            install();
-        } else if(argv[1] == "enable"){
-            check_root();
-            enable();
-        } else if(argv[1] == "uninstall"){
-            check_root();
-            uninstall();
-        } else if(argv[1] == "disable"){
-            check_root();
-            disable();
-        } else if(argv[1] == "start"){
-            boost::thread* manager_thread = new boost::thread(ManagerFunction::run);
-            manager_thread->join();
-        } else{
-            usage();
-        }
-    } else {
-        usage();
-    }
+    boost::thread* manager_thread = new boost::thread(ManagerFunction::run);
+    manager_thread->join();
 }
 
 /*
  * TODO:
+ * Argparsing && Config parsing
  * WiFi Authentication (Get IWLib encryption codes(ieee 802.11))
  *
  * Set scanning rate accordingly to moving speed ( eg. walking -> 2 seconds, driving -> 0.2 seconds )
