@@ -64,11 +64,11 @@ void disable(){
 void usage(){
     cout << "Usage: ./warpi {option}" << endl;
     cout << "\tOptions:" << endl;
-    cout << "\tstart\t-\tStarts the Program" << endl;
-    cout << "\tinstall\t-\tInstalls the Program for usage from /bin/" << endl;
+    cout << "\tstart\t\t-\tStarts the Program" << endl;
+    cout << "\tinstall\t\t-\tInstalls the Program for usage from /bin/" << endl;
     cout << "\tuninstall\t-\tRemoves the Program from /bin/" << endl;
-    cout << "\tenable\t-\tEnable running this program at boot" << endl;
-    cout << "\tdisable\t-\tDisable running this program at boot" << endl;
+    cout << "\tenable\t\t-\tEnable running this program at boot" << endl;
+    cout << "\tdisable\t\t-\tDisable running this program at boot" << endl;
     cout << "Got it? Ok. Bye." << endl;
     exit(0);
 }
