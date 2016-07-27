@@ -26,6 +26,11 @@ git clone https://github.com/mrtazz/restclient-cpp<br />
 cd restclient-cpp/ && ./autogen.sh && ./configure && make && sudo make install<br />
 <br />
 For connecting with the CouchDB Rest API.<br />
+#####jsoncpp:<br />
+git clone https://github.com/open-source-parsers/jsoncpp<br />
+cd jsoncpp && mkdir build && cmake .. && make && make install<br />
+<br />
+For searching data with/in the Database (Since CouchDB stores its stuff in json format)
 #####libiw-dev:<br />
 sudo apt-get install libiw-dev<br />
 Overall WiFi interaction.<br />
