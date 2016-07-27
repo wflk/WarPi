@@ -14,8 +14,8 @@ private:
     std::string database = "warpi";
 
 public:
-    bool gps_log(double longitude, double latitude, double altitude, double speed, int satellites_used, std::string timestamp);
-    bool wifi_log(double longitude, double latitude, double altitude, double speed, int satellites_used, std::string timestamp, std::string essid, std::string bssid, std::string encryption, std::string freq);
+    bool gps_log(double longitude, double latitude, double speed, int satellites_used, std::string timestamp);
+    bool wifi_log(double longitude, double latitude, double speed, int satellites_used, std::string timestamp, std::string essid, std::string bssid, std::string encryption, std::string freq);
     bool wifi_in_database(std::string bssid);
     std::string get_wifi_password(std::string bssid);
 };

@@ -6,13 +6,12 @@
 #include "Database.h"
 #include <json/json.h>
 
-bool Database::gps_log(double longitude, double latitude, double altitude, double speed, int satellites_used, std::string timestamp) {
+bool Database::gps_log(double longitude, double latitude, double speed, int satellites_used, std::string timestamp) {
     std::string post_data;
     post_data.append("{\n");
     post_data.append("\"_id\" : " + timestamp + ",\n");
     post_data.append("\"longitude\" : " + std::to_string(longitude) + ",\n");
     post_data.append("\"latitude\" : " + std::to_string(latitude) + ",\n");
-    post_data.append("\"altitude\" : " + std::to_string(altitude) + ",\n");
     post_data.append("\"speed\" : " + std::to_string(speed) + ",\n");
     post_data.append("\"satellites\" : " + std::to_string(satellites_used) + ",\n");
     post_data.append("\"timestamp\" : " + timestamp + "\n");
@@ -26,7 +25,7 @@ bool Database::gps_log(double longitude, double latitude, double altitude, doubl
     return false;
 }
 
-bool Database::wifi_log(double longitude, double latitude, double altitude, double speed, int satellites_used,
+bool Database::wifi_log(double longitude, double latitude, double speed, int satellites_used,
                         std::string timestamp, std::string essid, std::string bssid, std::string encryption,
                         std::string freq) {
     std::string post_data;
@@ -34,7 +33,6 @@ bool Database::wifi_log(double longitude, double latitude, double altitude, doub
     post_data.append("\"_id\" : " + bssid + ",\n");
     post_data.append("\"longitude\" : " + std::to_string(longitude) + ",\n");
     post_data.append("\"latitude\" : " + std::to_string(latitude) + ",\n");
-    post_data.append("\"altitude\" : " + std::to_string(altitude) + ",\n");
     post_data.append("\"speed\" : " + std::to_string(speed) + ",\n");
     post_data.append("\"satellites\" : " + std::to_string(satellites_used) + ",\n");
     post_data.append("\"timestamp\" : " + timestamp + ",\n");
