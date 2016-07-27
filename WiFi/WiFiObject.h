@@ -13,7 +13,7 @@ class WiFi {
 private:
     wireless_scan* result;
     std::string interface = "wlan0";
-    std::string crash_reason = NULL;
+    std::string crash_reason = "";
     int sleep_time = 1;
 
     bool interface_used = false;
