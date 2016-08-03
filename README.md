@@ -18,6 +18,8 @@ Manager.* -> Controls the whole thingy.<br />
 WiFi.* -> used for the overall WiFi functionality.<br />
 ###Ok, But what do I need to run it?<br />
 Either you use the dependencies.sh script or follow the steps below.<br />
+#####Libboost:<br />
+apt-get install libboost-all-dev
 #####RestClient:<br />
 git clone https://github.com/mrtazz/restclient-cpp<br />
 cd restclient-cpp/ && ./autogen.sh && ./configure && make && sudo make install<br />

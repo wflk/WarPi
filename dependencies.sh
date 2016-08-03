@@ -12,7 +12,7 @@ echo "[ * ] Installing wget, bzip2, tar, git, screen"
 apt-get install wget bzip2 tar git screen -y > /dev/null 2>&1
 
 echo "[ * ] Installing other needed libraries"
-apt-get install libiw-dev libcurl4-openssl-dev libgps-dev autoconf libtool -y > /dev/null 2>&1
+apt-get install libiw-dev libcurl4-openssl-dev libgps-dev autoconf libtool libboost-all-dev -y > /dev/null 2>&1
 
 echo "[ * ] Changing directory to '/tmp/'"
 cd /tmp/
