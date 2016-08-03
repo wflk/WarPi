@@ -25,12 +25,11 @@ void install(){
         cout << "WarPi is already installed" << endl;
         exit(0);
     }
-    struct stat stat_buf;
-    int read_fd = open("warpi", O_RDONLY);
-    fstat(read_fd, &stat_buf);
-    int write_fd = open("/bin/warpi", O_WRONLY | O_CREAT, stat_buf.st_mode);
-    close(read_fd);
-    close(write_fd);
+    ifstream infile("warpi", ios_base::in | ios_base::binary);
+    ofstream outfile("/bin/warpi", ios_base::out | ios_base::binary);
+    outfile << infile;
+    infile.close();
+    outfile.close();
 }
 
 void uninstall(){
@@ -73,9 +72,51 @@ void usage(){
     exit(0);
 }
 
+vector<string> get_arguments(char **argv, int argc) {
+    vector<string> arguments;
+    for (int i = 0; i < argc; i++) {
+        arguments.push_back(argv[i]);
+    }
+    return arguments;
+}
+
+Manager *parse_configuration() {
+    Manager *manager = new Manager();
+
+    // TODO: Config parsing
+
+    return manager;
+}
+
 int main(int argc, char ** argv) {
-    boost::thread* manager_thread = new boost::thread(ManagerFunction::run);
-    manager_thread->join();
+    check_root();
+    if (argc != 2) {
+        usage();
+    }
+    vector<string> arguments = get_arguments(argv, argc);
+    for (unsigned long i = 0; i < arguments.size(); i++) {
+        if (arguments.at(i) == "start") {
+            if (!file_exists("config.cfg")) {
+                cout << "Need a config file to function properly." << endl;
+                exit(0);
+            }
+            Manager *manager = parse_configuration();
+            manager->set_do_run(true);
+            manager->run();
+        }
+        if (arguments.at(i) == "install") {
+            install();
+        }
+        if (arguments.at(i) == "uninstall") {
+            uninstall();
+        }
+        if (arguments.at(i) == "enable") {
+            enable();
+        }
+        if (arguments.at(i) == "disable") {
+            disable();
+        }
+    }
 }
 
 /*

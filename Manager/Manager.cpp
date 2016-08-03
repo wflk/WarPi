@@ -1,20 +1,59 @@
 //
-// Created by insane on 7/18/16.
+// Created by insane on 8/3/16.
 //
 
 #include "Manager.h"
 
+void Manager::run() {
+    while (this->do_run) {
+        this->check_modules();
+    }
+}
 
-void ManagerFunction::run() {
-    Manager manager;
-    while(manager.get_do_run()){
-        if(manager.run_gps_monitor){
-            manager.start_gps_monitor_thread();
-            manager.run_gps_monitor = false;
+void Manager::set_do_run(bool value) {
+    this->do_run = value;
+}
+
+bool Manager::get_do_run() {
+    return this->do_run;
+}
+
+void Manager::check_modules() {
+    this->check_client();
+    this->check_wifi();
+    this->check_gps();
+}
+
+void Manager::check_client() {
+    if (client->get_do_run()) {
+        if (client->get_connect_interval() < (double(clock() - client->get_last_connect()) / CLOCKS_PER_SEC)) {
+            if (client->server_reachable()) {
+                // TODO: Send stuff
+            }
         }
-        if(manager.run_wifi_monitor){
-            manager.start_wifi_monitor_thread();
-            manager.run_wifi_monitor = false;
+    }
+}
+
+void Manager::check_wifi() {
+    if (this->wardriving) {
+        if (gps->get_do_run() && wifi->get_do_run()) {
+            // TODO: Get gps data & wifi data -> put to db
         }
+    }
+    // TODO: Get encryption type
+    if (this->capture_handshakes) {
+        // TODO: Capture handshakes and check validity -> put path + date + location + ap details to db
+    }
+    if (this->crack_wep) {
+        // TODO: Try different WEP attacks and check if can connect -> put date + location + password + ap details to db
+    }
+    if (this->crack_wps) {
+        // TODO: Try cracking WPS
+    }
+}
+
+void Manager::check_gps() {
+    if (this->gps_logging) {
+        // TODO: Log every x seconds location and put timestamp + location to db
     }
 }
