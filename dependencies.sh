@@ -31,9 +31,6 @@ cd /tmp/
 rm -rf cmake* > /dev/null 2>&1
 echo "[ * ] OK"
 
-echo "[ * ] Installing libboost"
-apt-get install libboost-all-dev
-
 echo "[ * ] Cloning restclient-cpp"
 git clone https://github.com/mrtazz/restclient-cpp.git > /dev/null 2>&1
 cd restclient-cpp/

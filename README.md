@@ -8,20 +8,16 @@ Short description of all files:<br />
 #####WarPi/Database:<br />
 For the connection with the CouchDB. (Storage of GPS/WiFi Logs)<br />
 #####WarPi/GPS:<br />
-GPS.* is the Object for the Storage of all the GPS information's.<br />
-GPSMonitor.* is the threaded Function, which fills the GPS Object's information's.<br />
+GPS.* -> used for the overall GPS functionality.<br />
 #####JSON:<br />
 https://github.com/nlohmann/json<br />
 The src/json.hpp from the above Project.<br />
 #####Manager:<br />
-Manager.* is the Object for all switches used by the threaded Function below.<br />
-ManagerFunction.* is the threaded Function, which manages everything.<br />
+Manager.* -> Controls the whole thingy.<br />
 #####WiFi:<br />
-WiFi.* is the Object for the Storage of the WiFi Scans.<br />
-WiFiMonitor.* is the threaded Function, which manages connecting, Wardriving, etc.<br />
-
+WiFi.* -> used for the overall WiFi functionality.<br />
 ###Ok, But what do I need to run it?<br />
-Needs GCC >= 4.9
+Either you use the dependencies.sh script or follow the steps below.<br />
 #####RestClient:<br />
 git clone https://github.com/mrtazz/restclient-cpp<br />
 cd restclient-cpp/ && ./autogen.sh && ./configure && make && sudo make install<br />
@@ -35,9 +31,6 @@ For searching data with/in the Database (Since CouchDB stores its stuff in json 
 #####libiw-dev:<br />
 sudo apt-get install libiw-dev<br />
 Overall WiFi interaction.<br />
-#####libboost-dev:<br />
-sudo apt-get install libboost-all-dev<br />
-For threading.
 #####gpsd/libgps-dev:<br />
 sudo apt-get install gpsd libgps-dev<br />
 Overall GPS interaction.<br />
@@ -45,8 +38,7 @@ Overall GPS interaction.<br />
 Uses these devices: (not needed, but recommended)<br />
 A WiFi dongle.<br />
 A GPS dongle.<br />
-(Small) Cameras<br />
-If a Device is missing, the program will just disable the modules that use that device by itself.<br />
+(Small) Cameras (numberplate recognition is not yet implemented)<br />
 
 ###Heyy, that's pretty good.<br />
 #####How can I help?<br />
@@ -54,7 +46,6 @@ Report Bugs, open a push request, just any useful contribution should get accept
 #####What's TODO:<br />
 WiFi:<br />
 ->Karma HotSpot<br />
-->Usage Lock in WiFi Class<br />
 ->Authentication with known & open Networks<br />
 <br />
 Networking:<br />
