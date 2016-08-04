@@ -1,6 +1,6 @@
 #WarPi<br />
 [![Build Status](http://eberlein.io:8080/buildStatus/icon?job=WarPi)](http://eberlein.io:8080/job/WarPi)
->> Does not work just yet. But compiles just fine on Raspberry Pi 2 & 3 aswell as elementary OS // Ubuntu 14.04 // Debian 8<br />
+>> Does not work just yet. But compiles just fine on Raspberry Pi 2 & 3 (Raspbian) aswell as elementary OS // Ubuntu 14.04 // Debian 8<br />
 TODO: Config reader <br />
 TODO: Database <br />
 ###What is it?<br />
