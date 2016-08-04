@@ -23,7 +23,7 @@ gps_data_t GPS::get_current_location() {
             return gps_data;
         } else {
             if ((gps_data.status == STATUS_FIX) && (gps_data.fix.mode == MODE_2D || gps_data.fix.mode == MODE_3D) &&
-                !isnan(gps_data.fix.longitude) && !isnan(gps_data.fix.latitude)) {
+                !std::isnan(gps_data.fix.longitude) && !std::isnan(gps_data.fix.latitude)) {
                 return gps_data;
             } else {
                 this->last_error == "NO_GPS_DATA";
