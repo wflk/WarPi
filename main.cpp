@@ -20,27 +20,6 @@ bool file_exists(const string& name){
     return (stat(name.c_str(), &buffer) == 0);
 }
 
-void install(){
-    if(file_exists("/bin/warpi")){
-        cout << "WarPi is already installed" << endl;
-        exit(0);
-    }
-    ifstream infile("warpi", ios_base::in | ios_base::binary);
-    ofstream outfile("/bin/warpi", ios_base::out | ios_base::binary);
-    outfile << infile;
-    infile.close();
-    outfile.close();
-}
-
-void uninstall(){
-    if(!file_exists("/bin/warpi")){
-        cout << "WarPi does not exist in /bin/" << endl;
-        cout << "I can not delete what does not exist." << endl;
-        exit(0);
-    }
-    remove("/bin/warpi");
-}
-
 void enable(){
     if(file_exists("/etc/init.d/warpi.sh")){
         cout << "WarPi should already run at boot" << endl;
@@ -64,8 +43,6 @@ void usage(){
     cout << "Usage: ./warpi {option}" << endl;
     cout << "\tOptions:" << endl;
     cout << "\tstart\t\t-\tStarts the Program" << endl;
-    cout << "\tinstall\t\t-\tInstalls the Program for usage from /bin/" << endl;
-    cout << "\tuninstall\t-\tRemoves the Program from /bin/" << endl;
     cout << "\tenable\t\t-\tEnable running this program at boot" << endl;
     cout << "\tdisable\t\t-\tDisable running this program at boot" << endl;
     cout << "Got it? Ok. Bye." << endl;
@@ -83,7 +60,7 @@ vector<string> get_arguments(char **argv, int argc) {
 Manager *parse_configuration() {
     Manager *manager = new Manager();
 
-    // TODO: Config parsing
+    // TODO: Config parsing w/ json
 
     return manager;
 }
@@ -103,12 +80,6 @@ int main(int argc, char ** argv) {
             Manager *manager = parse_configuration();
             manager->set_do_run(true);
             manager->run();
-        }
-        if (arguments.at(i) == "install") {
-            install();
-        }
-        if (arguments.at(i) == "uninstall") {
-            uninstall();
         }
         if (arguments.at(i) == "enable") {
             enable();
