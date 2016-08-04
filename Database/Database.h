@@ -13,16 +13,15 @@
 
 class Database {
 private:
-    Eve eve;
-    std::string database_port = "";
+    std::string database_port = "5000";
     boost::thread *eve_thread = new boost::thread(&Eve::run);
 public:
-    bool gps_logging(double longitude, double latitude, double speed);
+    void gps_logging(double longitude, double latitude, double speed);
 
-    bool ap_logging(double longitude, double latitude, double speed, std::string essid, std::string bssid, double freq,
+    void ap_logging(double longitude, double latitude, double speed, std::string essid, std::string bssid, double freq,
                     std::string encryption);
 
-    bool ap_in_db(std::string essid, std::string bssid);
+    void ap_in_db(std::string essid, std::string bssid);
 
 
 
