@@ -93,7 +93,7 @@ int main(int argc, char ** argv) {
 /*
  * TODO:
  * Argparsing && Config parsing
- * WiFi Authentication (Get IWLib encryption codes(ieee 802.11))
+ * WiFi Authentication (Get IWLib encryption codes(ieee 802.11))  ---> Maybe result->b.mode == IW_AUTH_WPA_ENABLED
  *
  * Set scanning rate accordingly to moving speed ( eg. walking -> 2 seconds, driving -> 0.2 seconds )
  *
