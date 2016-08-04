@@ -20,6 +20,7 @@ private:
     std::string last_error = "";
 
     std::string home_network_essid = "";
+    std::string home_network_bssid = "";
     std::string wifi_interface = "";
 public:
     wireless_scan *get_near_networks();

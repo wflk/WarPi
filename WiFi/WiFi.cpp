@@ -60,10 +60,10 @@ int WiFi::get_scan_interval() {
 bool WiFi::in_home_network() {
     wireless_scan *result = this->get_near_networks();
     while (NULL != result) {
-        if (this->home_network_essid == std::string(result->b.essid)) {
+        if ((this->home_network_essid == std::string(result->b.essid)) &&
+            (this->home_network_bssid == std::string(result->ap_addr.sa_data))) {
             return true;
         }
-        result = result->next;
     }
     return false;
 }
