@@ -1,0 +1,30 @@
+{
+  "wifi_configuration": {
+    "use_wifi": true,
+    "wifi_interface": "wlan0",
+    "wifi_scan_interval": 1500,
+    "home_network_essid": "WLAN-XXXX",
+    "home_network_bssid": ""
+  },
+  "gps_configuration": {
+    "use_gps": true,
+    "gpsd_port": "2974",
+    "timeout": 2000000
+  },
+  "database_configuration": {
+    "database_port": "5000"
+  },
+  "client_configuration": {
+    "external_server": "some_dyndns_host.ddns.net",
+    "internal_server": "192.168.2.109",
+    "server_port": "6666",
+    "connect_interval": 3600
+  },
+  "global_configuration": {
+    "wardriving": true,
+    "capture_handshakes": false,
+    "crack_wep": false,
+    "crack_wps": false,
+    "gps_logging": true
+  }
+}
