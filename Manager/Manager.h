@@ -8,11 +8,14 @@
 #include "../Client/Client.h"
 #include "../WiFi/WiFi.h"
 #include "../GPS/GPS.h"
+#include "../Database/Database.h"
 
 // TODO: Self-management
 
 class Manager {
 private:
+    Database *database = new Database();
+
     Client *client = new Client();
     bool client_do_run = true;
 
@@ -37,6 +40,7 @@ private:
     void check_gps();
 
 public:
+
     void run();
 
     bool get_do_run();
