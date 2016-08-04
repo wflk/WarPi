@@ -1,8 +1,6 @@
 #include <iostream>
 #include <fstream>
-#include <sys/stat.h>
-#include <boost/thread/thread.hpp>
-
+#include <boost/filesystem.hpp>
 #include "Manager/Manager.h"
 
 
@@ -15,13 +13,12 @@ void check_root(){
     }
 }
 
-bool file_exists(const string& name){
-    struct stat buffer;
-    return (stat(name.c_str(), &buffer) == 0);
+bool file_exists(const boost::filesystem::path path) {
+    return boost::filesystem::is_regular_file(path);
 }
 
 void enable(){
-    if(file_exists("/etc/init.d/warpi.sh")){
+    if (file_exists(boost::filesystem::path("/etc/init.d/warpi.sh"))) {
         cout << "WarPi should already run at boot" << endl;
         exit(0);
     }
@@ -32,7 +29,7 @@ void enable(){
 }
 
 void disable(){
-    if(!file_exists("/etc/init.d/warpi.sh")){
+    if (!file_exists(boost::filesystem::path("/etc/init.d/warpi.sh"))) {
         cout << "WarPi already does not run at boot" << endl;
         exit(0);
     }
@@ -73,8 +70,10 @@ int main(int argc, char ** argv) {
     vector<string> arguments = get_arguments(argv, argc);
     for (unsigned long i = 0; i < arguments.size(); i++) {
         if (arguments.at(i) == "start") {
-            if (!file_exists("config.cfg")) {
+            if (!file_exists("/etc/WarPi/config.json")) {
                 cout << "Need a config file to function properly." << endl;
+                cout << "Creating the configuration file now. Please edit it to your needs." << endl;
+                cout << "Config file should be located at: /etc/WarPi/config.json" << endl;
                 exit(0);
             }
             Manager *manager = parse_configuration();
