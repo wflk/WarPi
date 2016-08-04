@@ -25,7 +25,7 @@ private:
 
     std::string external_server = "";
     std::string internal_server = "";
-    int server_port = 6666;
+    std::string server_port = "6666";
 
 public:
     void set_last_connect(clock_t time);
@@ -52,9 +52,9 @@ public:
 
     std::string get_internal_server();
 
-    void set_server_port(int server_port);
+    void set_server_port(std::string server_port);
 
-    int get_server_port();
+    std::string get_server_port();
 
     bool server_reachable();
 

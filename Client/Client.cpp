@@ -53,11 +53,11 @@ std::string Client::get_internal_server() {
     return this->internal_server;
 }
 
-void Client::set_server_port(int server_port) {
+void Client::set_server_port(std::string server_port) {
     this->server_port = server_port;
 }
 
-int Client::get_server_port() {
+std::string Client::get_server_port() {
     return this->server_port;
 }
 
