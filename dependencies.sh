@@ -12,7 +12,10 @@ echo "[ * ] Installing wget, bzip2, tar, git, screen"
 apt-get install wget bzip2 tar git screen -y > /dev/null 2>&1
 
 echo "[ * ] Installing other needed libraries"
-apt-get install libiw-dev libcurl4-openssl-dev libgps-dev autoconf libtool libboost-all-dev -y > /dev/null 2>&1
+apt-get install libiw-dev libcurl4-openssl-dev libgps-dev autoconf libtool libboost-all-dev mongodb python python-dev python-pip -y > /dev/null 2>&1
+
+echo "[ * ] Installing Eve"
+pip install eve > /dev/null 2>&1
 
 echo "[ * ] Changing directory to '/tmp/'"
 cd /tmp/
@@ -44,7 +47,7 @@ cd /tmp
 rm -rf restclient-cpp/
 
 echo "[ * ] Cloning jsoncpp"
-git clone https://github.com/open-source-parsers/jsoncpp > /dev/null 2>&1
+git clone https://github.com/open-source-parsers/jsoncp > /dev/null 2>&1
 cd jsoncpp
 echo "[ * ] Installing jsoncpp"
 mkdir build
