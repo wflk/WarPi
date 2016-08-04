@@ -1,14 +1,17 @@
-cmake_minimum_required(VERSION 3.5)
-project(WarPi)
+CMAKE_MINIMUM_REQUIRED(VERSION 3.5)
+PROJECT(WarPi)
 
 FIND_PACKAGE(Boost 1.54 COMPONENTS thread REQUIRED)
 INCLUDE_DIRECTORIES(${Boost_INCLUDE_DIR})
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -ljsoncpp -lcurl -lgps -liw")
+FIND_PACKAGE(PythonLibs REQUIRED)
+INCLUDE_DIRECTORIES(${PYTHON_INCLUDE_DIRS})
 
-set(SOURCE_FILES main.cpp Manager/Manager.cpp Manager/Manager.h Client/Client.cpp Client/Client.h WiFi/WiFi.cpp WiFi/WiFi.h GPS/GPS.cpp GPS/GPS.h Database/Database.cpp Database/Database.h)
-add_executable(WarPi ${SOURCE_FILES})
-TARGET_LINK_LIBRARIES(WarPi ${Boost_LIBRARIES} restclient-cpp jsoncpp iw gps)
+SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -ljsoncpp -lcurl -lgps -liw")
 
-install(TARGETS WarPi
+SET(SOURCE_FILES main.cpp Manager/Manager.cpp Manager/Manager.h Client/Client.cpp Client/Client.h WiFi/WiFi.cpp WiFi/WiFi.h GPS/GPS.cpp GPS/GPS.h Database/Database.cpp Database/Database.h Eve/Eve.cpp Eve/Eve.h)
+ADD_EXECUTABLE(WarPi ${SOURCE_FILES})
+TARGET_LINK_LIBRARIES(WarPi ${Boost_LIBRARIES} ${PYTHON_LIBRARIES} restclient-cpp jsoncpp iw gps)
+
+INSTALL(TARGETS WarPi
         RUNTIME DESTINATION bin)
