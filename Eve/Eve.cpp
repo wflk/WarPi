@@ -4,10 +4,14 @@
 
 #include "Eve.h"
 #include <python2.7/Python.h>
+#include <string>
 
 void Eve::run() {
-    FILE *eve = fopen("eve.py", "r");
+    std::string eve = "from eve import Eve\n\n"
+            "my_settings = { 'MONGO_HOST: 'localhost', 'MONGO_PORT': 27017, 'MONGO_DBNAME': 'WarPi', 'DOMAIN': {'gps': {}, 'aps': {}} }"
+            "app = Eve(settings=my_settings)\n"
+            "app.run()\n";
     Py_Initialize();
-    PyRun_SimpleFile(eve, "eve.py");
+    PyRun_SimpleString(eve.c_str());
     Py_Finalize();
 }
