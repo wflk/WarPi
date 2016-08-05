@@ -37,7 +37,13 @@ void Manager::check_client() {
 void Manager::check_wifi() {
     if (this->wardriving) {
         if (gps->get_do_run() && wifi->get_do_run()) {
-            // TODO: Get gps data & wifi data -> put to db
+            wireless_scan *wifi_scan = wifi->get_near_networks();
+            gps_data_t gps_data = gps->get_current_location();
+            if ((wifi_scan != NULL) && (!std::isnan(gps_data.fix.longitude) && !std::isnan(gps_data.fix.latitude))) {
+                database->ap_logging(gps_data.fix.longitude, gps_data.fix.latitude, gps_data.fix.speed,
+                                     wifi_scan->b.essid, wifi_scan->ap_addr.sa_data, wifi_scan->b.freq,
+                                     std::to_string(wifi_scan->b.mode));
+            }
         }
     }
     // TODO: Get encryption type
@@ -54,7 +60,10 @@ void Manager::check_wifi() {
 
 void Manager::check_gps() {
     if (this->gps->get_gps_logging()) {
-        // TODO: Log every x seconds location and put timestamp + location to db
+        gps_data_t gps_data = gps->get_current_location();
+        if (!std::isnan(gps_data.fix.longitude) && !std::isnan(gps_data.fix.latitude)) {
+            database->gps_logging(gps_data.fix.longitude, gps_data.fix.latitude, gps_data.fix.speed);
+        }
     }
 }
 
