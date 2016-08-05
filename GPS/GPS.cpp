@@ -61,3 +61,19 @@ void GPS::set_timeout(int timeout) {
 int GPS::get_timeout() {
     return this->timeout;
 }
+
+void GPS::set_gps_logging_interval(int interval) {
+    this->gps_logging_interval = interval;
+}
+
+int GPS::get_gps_logging_interval() {
+    return this->gps_logging_interval;
+}
+
+void GPS::set_gps_logging(bool value) {
+    this->gps_logging = value;
+}
+
+bool GPS::get_gps_logging() {
+    return this->gps_logging;
+}

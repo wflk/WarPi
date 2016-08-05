@@ -18,6 +18,9 @@ private:
     std::vector<std::string> all_errors = {};
 
     int timeout = 2000000;
+
+    bool gps_logging = true;
+    int gps_logging_interval = 1000;
 public:
     gps_data_t get_current_location();
 
@@ -32,6 +35,14 @@ public:
     void set_timeout(int timeout);
 
     int get_timeout();
+
+    void set_gps_logging_interval(int interval);
+
+    int get_gps_logging_interval();
+
+    void set_gps_logging(bool value);
+
+    bool get_gps_logging();
 
 };
 
