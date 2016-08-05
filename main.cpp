@@ -54,14 +54,6 @@ vector<string> get_arguments(char **argv, int argc) {
     return arguments;
 }
 
-Manager *parse_configuration() {
-    Manager *manager = new Manager();
-
-    // TODO: Config parsing w/ json
-
-    return manager;
-}
-
 int main(int argc, char ** argv) {
     check_root();
     if (argc != 2) {
@@ -71,12 +63,13 @@ int main(int argc, char ** argv) {
     for (unsigned long i = 0; i < arguments.size(); i++) {
         if (arguments.at(i) == "start") {
             if (!file_exists("/etc/WarPi/config.json")) {
+                // TODO: Check for --config and use user specified config file
                 cout << "Need a config file to function properly." << endl;
                 cout << "Creating the configuration file now. Please edit it to your needs." << endl;
                 cout << "Config file should be located at: /etc/WarPi/config.json" << endl;
                 exit(0);
             }
-            Manager *manager = parse_configuration();
+            Manager *manager = new Manager();
             manager->set_do_run(true);
             manager->run();
         }
