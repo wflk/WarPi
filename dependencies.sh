@@ -46,10 +46,10 @@ echo "[ * ] Done. Cleaning up."
 cd /tmp
 rm -rf restclient-cpp/
 
-echo "[ * ] Cloning jsoncpp"
-git clone https://github.com/open-source-parsers/jsoncp > /dev/null 2>&1
-cd jsoncpp
-echo "[ * ] Installing jsoncpp"
+echo "[ * ] Cloning rapidjson"
+git clone https://github.com/miloyip/rapidjson > /dev/null 2>&1
+cd rapidjson
+echo "[ * ] Installing rapidjson"
 mkdir build
 cd build
 cmake .. > /dev/null 2>&1
@@ -57,6 +57,6 @@ make > /dev/null 2>&1
 make install > /dev/null 2>&1
 cd /tmp
 echo "[ + ] Should be installed. Cleaning up."
-rm -rf jsoncpp
+rm -rf rapidjson
 
 echo "[ + ] Done installing dependencies"
