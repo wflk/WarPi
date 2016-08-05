@@ -9,12 +9,15 @@
   "gps_configuration": {
     "use_gps": true,
     "gpsd_port": "2974",
-    "timeout": 2000000
+    "timeout": 2000000,
+    "gps_logging": true,
+    "gps_logging_interval": 1000
   },
   "database_configuration": {
     "database_port": "5000"
   },
   "client_configuration": {
+    "use_server": false,
     "external_server": "some_dyndns_host.ddns.net",
     "internal_server": "192.168.2.109",
     "server_port": "6666",
@@ -24,7 +27,6 @@
     "wardriving": true,
     "capture_handshakes": false,
     "crack_wep": false,
-    "crack_wps": false,
-    "gps_logging": true
+    "crack_wps": false
   }
 }
