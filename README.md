@@ -1,8 +1,5 @@
 #WarPi<br />
 [![Build Status](http://eberlein.io:8080/buildStatus/icon?job=WarPi)](http://eberlein.io:8080/job/WarPi)
->> Does not work just yet. But compiles just fine on Raspberry Pi 2 & 3 (Raspbian) aswell as elementary OS // Ubuntu 14.04 // Debian 8<br />
-TODO: Config reader <br />
-TODO: Database <br />
 ###What is it?<br />
 Basically a All-in-One Box for your Car.<br />
 ###Sounds sketchy. Whats exactly in it?<br />
@@ -27,11 +24,11 @@ git clone https://github.com/mrtazz/restclient-cpp<br />
 cd restclient-cpp/ && ./autogen.sh && ./configure && make && sudo make install<br />
 <br />
 For connecting with the CouchDB Rest API.<br />
-#####jsoncpp:<br />
-git clone https://github.com/open-source-parsers/jsoncpp<br />
+#####RapidJSON:<br />
+git clone https://github.com/miloyip/rapidjson<br />
 cd jsoncpp && mkdir build && cmake .. && make && make install<br />
 <br />
-For searching data with/in the Database (Since CouchDB stores its stuff in json format)
+For searching data with/in the Database and parsing the configuration file.
 #####libiw-dev:<br />
 sudo apt-get install libiw-dev<br />
 Overall WiFi interaction.<br />
