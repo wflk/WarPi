@@ -15,9 +15,8 @@
 class Manager {
 private:
     Database *database = new Database();
-
     Client *client = new Client();
-    bool client_do_run = true;
+    GPS *gps = new GPS();
 
     WiFi *wifi = new WiFi();
     bool capture_handshakes = false; // TODO
@@ -25,11 +24,10 @@ private:
     bool crack_wep = false; // TODO
     bool crack_wps = false; // TODO
 
-    GPS *gps = new GPS();
-    bool gps_logging = false;
-    int gps_logging_interval = 1000;
+
 
     bool do_run = false;
+    std::string configuration_file = "/etc/WarPi/config.json";
 
     void check_modules();
 
@@ -39,11 +37,11 @@ private:
 
     void check_gps();
 
+    void read_configuration();
+
 public:
 
     void run();
-
-    bool get_do_run();
 
     void set_do_run(bool value);
 
