@@ -67,3 +67,11 @@ bool WiFi::in_home_network() {
     }
     return false;
 }
+
+void WiFi::set_home_network_essid(std::string essid) {
+    this->home_network_essid = essid;
+}
+
+void WiFi::set_home_network_bssid(std::string bssid) {
+    this->home_network_bssid = bssid;
+}

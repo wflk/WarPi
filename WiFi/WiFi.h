@@ -43,6 +43,10 @@ public:
 
     bool in_home_network();
 
+    void set_home_network_essid(std::string essid);
+
+    void set_home_network_bssid(std::string bssid);
+
 };
 
 
