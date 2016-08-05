@@ -26,7 +26,7 @@ cd restclient-cpp/ && ./autogen.sh && ./configure && make && sudo make install<b
 For connecting with the CouchDB Rest API.<br />
 #####RapidJSON:<br />
 git clone https://github.com/miloyip/rapidjson<br />
-cd jsoncpp && mkdir build && cmake .. && make && make install<br />
+cd rapidjson && mkdir build && cmake .. && make && make install<br />
 <br />
 For searching data with/in the Database and parsing the configuration file.
 #####libiw-dev:<br />
