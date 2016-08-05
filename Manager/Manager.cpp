@@ -40,9 +40,12 @@ void Manager::check_wifi() {
             wireless_scan *wifi_scan = wifi->get_near_networks();
             gps_data_t gps_data = gps->get_current_location();
             if ((wifi_scan != NULL) && (!std::isnan(gps_data.fix.longitude) && !std::isnan(gps_data.fix.latitude))) {
-                database->ap_logging(gps_data.fix.longitude, gps_data.fix.latitude, gps_data.fix.speed,
-                                     wifi_scan->b.essid, wifi_scan->ap_addr.sa_data, wifi_scan->b.freq,
-                                     std::to_string(wifi_scan->b.mode));
+                while (wifi_scan != NULL) {
+                    database->ap_logging(gps_data.fix.longitude, gps_data.fix.latitude, gps_data.fix.speed,
+                                         wifi_scan->b.essid, wifi_scan->ap_addr.sa_data, wifi_scan->b.freq,
+                                         std::to_string(wifi_scan->b.mode));
+                    wifi_scan = wifi_scan->next;
+                }
             }
         }
     }
