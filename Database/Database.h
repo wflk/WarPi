@@ -23,6 +23,10 @@ public:
 
     void ap_in_db(std::string essid, std::string bssid);
 
+    void set_database_port(std::string port);
+
+    std::string get_database_port();
+
 
 
 

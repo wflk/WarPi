@@ -30,3 +30,11 @@ void Database::ap_logging(double longitude, double latitude, double speed, std::
             "\", \"speed\": \"" + std::to_string(speed) + "\", \"time\": \"" + std::to_string(ts) + "\"}";
     RestClient::post("http://localhost:" + database_port + "/aps", "application/json", data);
 }
+
+void Database::set_database_port(std::string port) {
+    this->database_port = port;
+}
+
+std::string Database::get_database_port() {
+    return this->database_port;
+}
