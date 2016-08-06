@@ -4,16 +4,17 @@
 Basically a All-in-One Box for your Car.<br />
 ###Sounds sketchy. Whats exactly in it?<br />
 Short description of all files:<br />
+#####WarPi/Client:<br />
+Client, which shall connect to the main Server to synchronize its logs and get new commands. <br />
 #####WarPi/Database:<br />
-For the connection with the CouchDB. (Storage of GPS/WiFi Logs)<br />
+For the connection with the Eve REST API. (Storage of GPS/WiFi Logs)<br />
+#####WarPi/Eve:<br />
+Small Python thread, which gets called by the Database Class. It just provides the Eve REST API.<br />
 #####WarPi/GPS:<br />
 GPS.* -> used for the overall GPS functionality.<br />
-#####JSON:<br />
-https://github.com/nlohmann/json<br />
-The src/json.hpp from the above Project.<br />
-#####Manager:<br />
+#####WarPi/Manager:<br />
 Manager.* -> Controls the whole thingy.<br />
-#####WiFi:<br />
+#####WarPi/WiFi:<br />
 WiFi.* -> used for the overall WiFi functionality.<br />
 ###Ok, But what do I need to run it?<br />
 Either you use the dependencies.sh script or follow the steps below.<br />
