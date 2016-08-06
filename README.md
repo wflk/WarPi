@@ -47,10 +47,11 @@ A GPS dongle.<br />
 Report Bugs, open a push request, just any useful contribution should get accepted.<br />
 #####What's TODO:<br />
 WiFi:<br />
+->Get WiFi Encryption Type (maybe via libtins in a thread) <br />
 ->Karma HotSpot<br />
-->Authentication with known & open Networks<br />
+->Authentication with known & open Networks (first over system(), then maybe over an actual 802.11 implementation)<br />
 <br />
-Networking:<br />
+Networking: (after connecting to networks is done)<br />
 ->Host Discovery<br />
 ->Spoofing<br />
 <br />
