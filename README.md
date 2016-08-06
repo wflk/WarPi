@@ -11,11 +11,11 @@ For the connection with the Eve REST API. (Storage of GPS/WiFi Logs)<br />
 #####WarPi/Eve:<br />
 Small Python thread, which gets called by the Database Class. It just provides the Eve REST API.<br />
 #####WarPi/GPS:<br />
-GPS.* -> used for the overall GPS functionality.<br />
+Used for the overall GPS functionality.<br />
 #####WarPi/Manager:<br />
-Manager.* -> Controls the whole thingy.<br />
+Controls the whole thingy.<br />
 #####WarPi/WiFi:<br />
-WiFi.* -> used for the overall WiFi functionality.<br />
+Used for the overall WiFi functionality.<br />
 ###Ok, But what do I need to run it?<br />
 Either you use the dependencies.sh script or follow the steps below.<br />
 #####Libboost:<br />
